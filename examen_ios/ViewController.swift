@@ -7,11 +7,15 @@
 //
 
 import UIKit
+import Firebase
+import GoogleSignIn
 
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        GIDSignIn.sharedInstance()?.presentingViewController = self
+        GIDSignIn.sharedInstance().signIn()
         // Do any additional setup after loading the view, typically from a nib.
     }
 
