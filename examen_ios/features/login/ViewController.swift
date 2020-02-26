@@ -21,8 +21,12 @@ class ViewController: UIViewController, GIDSignInUIDelegate {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        Auth.auth().addStateDidChangeListener { (auth, user) in
+        Auth.auth().addStateDidChangeListener { (auth, user) in if let user = user {
             self.performSegue(withIdentifier: "loginToCategories", sender: nil)
+        } else {
+            // No User is signed in. Show user the login screen
+            }
+            
         }
     }
 
