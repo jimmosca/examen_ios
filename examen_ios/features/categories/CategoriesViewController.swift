@@ -49,12 +49,10 @@ class CategoriesViewController: UIViewController, UITableViewDelegate, UITableVi
         }
         
         let categorySelected = self.categories[indexPath.row]
-        /*nIndice = indexPath.row
-        if let destinationViewController = segue.destination as? NutrientDetailViewController{
-            // Especificas que esta clase es el delegate del DetailView
-            destinationViewController.delegate = self
-            destinationViewController.set(nutrientData: nutrientSelected)
-        }*/
+        if let destinationViewController = segue.destination as? CategoryDetailViewController{
+                        
+            destinationViewController.set(categorySelected: categorySelected)
+        }
     }
     
     func fetchAllCategories(){
@@ -66,7 +64,7 @@ class CategoriesViewController: UIViewController, UITableViewDelegate, UITableVi
                 print("\n\tSHOWING ALL DOCUMENTS \n")
                 for document in querySnapshot!.documents {
                     guard let nombre = document.data()["nombre"] as? String, let items = document.data()["items"] as? Array<String> else{return}
-                    categories.append(Category(nombre: nombre, items: items))
+                    categories.append(Category(id: document.documentID, nombre: nombre, items: items))
                     print("\(document.documentID) => \(document.data())")
                 }
                 print("\n")

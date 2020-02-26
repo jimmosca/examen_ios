@@ -9,11 +9,13 @@
 import Foundation
 
 class Category {
+    var id: String?
     var nombre: String?
     var items: Array<String>?
     
-    convenience init(nombre: String, items: Array<String>) {
+    convenience init(id: String, nombre: String, items: Array<String>) {
         self.init()
+        self.id = id
         self.nombre = nombre
         self.items = items
         

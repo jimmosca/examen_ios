@@ -13,22 +13,24 @@ import FirebaseFirestore
 class CategoryDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
     let db = Firestore.firestore()
-    var categories: Array<Category> = []
+    var category: Category?
+    var items: Array<String> = []
     
     @IBOutlet weak var cTableView: UITableView!
+    @IBOutlet weak var cNavigationItem: UINavigationItem!
     
     @IBAction func addPressed(_ sender: AnyObject){
         
-        let alert = UIAlertController(title: "Add New Category", message: nil, preferredStyle: .alert)
+        let alert = UIAlertController(title: "Add New Item", message: nil, preferredStyle: .alert)
         
         alert.addTextField { (textField) in
-            textField.placeholder = "Add a New Category"
+            textField.placeholder = "Add a New Item"
         }
         
         alert.addAction(UIAlertAction(title: "Add", style: .default, handler: { [weak alert] (_) in
             guard let text = alert?.textFields![0].text else{return}
             print("Text field: \(text)")
-            self.addCategory(nombre: text)
+            self.addItem(nombre: text)
         }))
         
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
@@ -36,56 +38,51 @@ class CategoryDetailViewController: UIViewController, UITableViewDelegate, UITab
         self.present(alert, animated: true, completion: nil)
     }
     
+    @IBAction func backPressed(_ sender: AnyObject){
+        
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        cNavigationItem.title = category?.nombre
         configure(tableView: cTableView)
-        fetchAllCategories()
+        fetchItems()
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let tableViewCell = sender as? UITableViewCell,
-            let indexPath = cTableView.indexPath(for: tableViewCell) else {
-                return
-        }
-        
-        let categorySelected = self.categories[indexPath.row]
-        /*nIndice = indexPath.row
-         if let destinationViewController = segue.destination as? NutrientDetailViewController{
-         // Especificas que esta clase es el delegate del DetailView
-         destinationViewController.delegate = self
-         destinationViewController.set(nutrientData: nutrientSelected)
-         }*/
+    func set(categorySelected: Category){
+        self.category = categorySelected
     }
     
-    func fetchAllCategories(){
-        var categories: Array<Category> = []
-        db.collection("categories").getDocuments() { (querySnapshot, err) in
-            if let err = err {
-                print("Error getting documents: \(err)")
-            } else {
-                print("\n\tSHOWING ALL DOCUMENTS \n")
-                for document in querySnapshot!.documents {
-                    guard let nombre = document.data()["nombre"] as? String, let items = document.data()["items"] as? Array<String> else{return}
-                    categories.append(Category(nombre: nombre, items: items))
-                    print("\(document.documentID) => \(document.data())")
+    
+    func fetchItems(){
+        var items: Array<String> = []
+        db.collection("categories").document((category?.id!)!)
+            .getDocument() { (document, err) in
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                } else {
+                    
+                    print("\(document?.documentID) => \(document?.data())")
+                    items = document?.data()?["items"] as! Array<String>
+                    
                 }
-                print("\n")
-            }
-            DispatchQueue.main.async {
-                self.categories = categories
-                self.cTableView.reloadData()
-            }
+                
+                DispatchQueue.main.async {
+                    self.items = items
+                    self.cTableView.reloadData()
+                }
         }
         
         
         
     }
     
-    func addCategory(nombre: String) {
-        var ref: DocumentReference? = nil
-        ref = db.collection("categories").addDocument(data: [
-            "nombre": nombre,
-            "items": []
+    func addItem(nombre: String) {
+        self.items.append(nombre)
+        var ref: DocumentReference? = db.collection("categories").document((category?.id!)!)
+        ref?.updateData([
+            "items": self.items
         ]) { err in
             if let err = err {
                 print("Error adding document: \(err)")
@@ -93,7 +90,7 @@ class CategoryDetailViewController: UIViewController, UITableViewDelegate, UITab
                 print("Document added with ID: \(ref!.documentID)")
             }
         }
-        self.fetchAllCategories()
+        self.fetchItems()
     }
     
     private func configure(tableView: UITableView){
@@ -102,7 +99,7 @@ class CategoryDetailViewController: UIViewController, UITableViewDelegate, UITab
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.categories.count
+        return self.items.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -113,7 +110,7 @@ class CategoryDetailViewController: UIViewController, UITableViewDelegate, UITab
         let cell = tableView.dequeueReusableCell(withIdentifier: CategoryViewCell.cIdentifier,
                                                  for: indexPath)
         
-        (cell as? CategoryViewCell)?.update(data: self.categories[indexPath.row].nombre)
+        (cell as? CategoryViewCell)?.update(data: self.items[indexPath.row])
         
         return cell
     }
