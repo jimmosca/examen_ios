@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import GoogleSignIn
+import FirebaseAuth
 
 class ViewController: UIViewController, GIDSignInUIDelegate {
 
@@ -16,7 +17,13 @@ class ViewController: UIViewController, GIDSignInUIDelegate {
         super.viewDidLoad()
         GIDSignIn.sharedInstance()?.uiDelegate = self
         GIDSignIn.sharedInstance().signIn()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        Auth.auth().addStateDidChangeListener { (auth, user) in
+            self.performSegue(withIdentifier: "loginToCategories", sender: nil)
+        }
     }
 
     override func didReceiveMemoryWarning() {
