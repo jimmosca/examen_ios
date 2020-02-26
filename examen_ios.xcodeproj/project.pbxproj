@@ -16,6 +16,8 @@
 		C8F1F6E1240678B400915D4B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8F1F6DF240678B400915D4B /* LaunchScreen.storyboard */; };
 		C8F1F6E924067D4A00915D4B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C8F1F6E824067D4A00915D4B /* GoogleService-Info.plist */; };
 		C8F1F6EF2406885E00915D4B /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F1F6EE2406885E00915D4B /* CategoriesViewController.swift */; };
+		C8F1F6F124068DB600915D4B /* CategoryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F1F6F024068DB600915D4B /* CategoryViewCell.swift */; };
+		C8F1F6F4240692B200915D4B /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F1F6F3240692B200915D4B /* Category.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +33,8 @@
 		C8F1F6E2240678B400915D4B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C8F1F6E824067D4A00915D4B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C8F1F6EE2406885E00915D4B /* CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
+		C8F1F6F024068DB600915D4B /* CategoryViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewCell.swift; sourceTree = "<group>"; };
+		C8F1F6F3240692B200915D4B /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		F257B7CC59CB25169BEA2D17 /* Pods-examen_ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-examen_ios.release.xcconfig"; path = "Pods/Target Support Files/Pods-examen_ios/Pods-examen_ios.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -84,6 +88,7 @@
 		C8F1F6D2240678B200915D4B /* examen_ios */ = {
 			isa = PBXGroup;
 			children = (
+				C8F1F6F22406929D00915D4B /* model */,
 				C8F1F6EB240687F800915D4B /* features */,
 				C8F1F6EA240687DC00915D4B /* app */,
 				C8F1F6DD240678B400915D4B /* Assets.xcassets */,
@@ -125,8 +130,17 @@
 			isa = PBXGroup;
 			children = (
 				C8F1F6EE2406885E00915D4B /* CategoriesViewController.swift */,
+				C8F1F6F024068DB600915D4B /* CategoryViewCell.swift */,
 			);
 			path = categories;
+			sourceTree = "<group>";
+		};
+		C8F1F6F22406929D00915D4B /* model */ = {
+			isa = PBXGroup;
+			children = (
+				C8F1F6F3240692B200915D4B /* Category.swift */,
+			);
+			path = model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -283,6 +297,8 @@
 				C8F1F6D6240678B200915D4B /* ViewController.swift in Sources */,
 				C8F1F6EF2406885E00915D4B /* CategoriesViewController.swift in Sources */,
 				C8F1F6D4240678B200915D4B /* AppDelegate.swift in Sources */,
+				C8F1F6F124068DB600915D4B /* CategoryViewCell.swift in Sources */,
+				C8F1F6F4240692B200915D4B /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

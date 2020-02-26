@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -48,21 +49,69 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Funcionaaaa" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YmX-RL-chh">
-                                <rect key="frame" x="159" y="313" width="97" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qgu-WR-Zgq">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <items>
+                                    <navigationItem title="Categories" id="g3X-8S-0co">
+                                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="CbC-zh-FzJ">
+                                            <connections>
+                                                <action selector="addPressed:" destination="6EK-gv-aPU" id="gmg-To-6oB"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="djQ-ca-aVd">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="CategoryViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CategoryViewCell" id="M9z-eZ-9z1" customClass="CategoryViewCell" customModule="examen_ios" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="M9z-eZ-9z1" id="Jh6-LW-VSz">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UKJ-YV-bdm">
+                                                    <rect key="frame" x="31" y="11" width="42" height="22"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="UKJ-YV-bdm" firstAttribute="top" secondItem="Jh6-LW-VSz" secondAttribute="topMargin" id="eVH-Jk-3KY"/>
+                                                <constraint firstItem="UKJ-YV-bdm" firstAttribute="bottom" secondItem="Jh6-LW-VSz" secondAttribute="bottomMargin" id="tfd-6U-Hyf"/>
+                                                <constraint firstItem="UKJ-YV-bdm" firstAttribute="leading" secondItem="Jh6-LW-VSz" secondAttribute="leadingMargin" constant="16" id="yWi-Vu-C4G"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="cNameLabel" destination="UKJ-YV-bdm" id="72i-eq-F0N"/>
+                                            <outlet property="cView" destination="Jh6-LW-VSz" id="AKe-nW-f3J"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Ehp-lI-11H" firstAttribute="trailing" secondItem="djQ-ca-aVd" secondAttribute="trailing" id="GjT-o9-UQW"/>
+                            <constraint firstItem="djQ-ca-aVd" firstAttribute="top" secondItem="Qgu-WR-Zgq" secondAttribute="bottom" id="InW-7g-IRd"/>
+                            <constraint firstItem="Ehp-lI-11H" firstAttribute="bottom" secondItem="djQ-ca-aVd" secondAttribute="bottom" id="MjG-BI-NzK"/>
+                            <constraint firstItem="djQ-ca-aVd" firstAttribute="leading" secondItem="Ehp-lI-11H" secondAttribute="leading" id="Svu-0d-7ta"/>
+                            <constraint firstItem="Qgu-WR-Zgq" firstAttribute="leading" secondItem="Ehp-lI-11H" secondAttribute="leading" id="b7f-eh-B4I"/>
+                            <constraint firstItem="Qgu-WR-Zgq" firstAttribute="trailing" secondItem="Ehp-lI-11H" secondAttribute="trailing" id="fFa-46-M9c"/>
+                            <constraint firstItem="Qgu-WR-Zgq" firstAttribute="top" secondItem="Ehp-lI-11H" secondAttribute="top" id="hjq-EB-Z4r"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Ehp-lI-11H"/>
                     </view>
+                    <connections>
+                        <outlet property="cTableView" destination="djQ-ca-aVd" id="U9a-6s-gUW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7EV-sc-Nwk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1057" y="118"/>
+            <point key="canvasLocation" x="1056.5" y="117.5"/>
         </scene>
     </scenes>
 </document>
