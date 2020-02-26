@@ -18,6 +18,7 @@
 		C8F1F6EF2406885E00915D4B /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F1F6EE2406885E00915D4B /* CategoriesViewController.swift */; };
 		C8F1F6F124068DB600915D4B /* CategoryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F1F6F024068DB600915D4B /* CategoryViewCell.swift */; };
 		C8F1F6F4240692B200915D4B /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F1F6F3240692B200915D4B /* Category.swift */; };
+		C8F1F6F624069F0100915D4B /* CategoryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F1F6F524069F0100915D4B /* CategoryDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		C8F1F6EE2406885E00915D4B /* CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
 		C8F1F6F024068DB600915D4B /* CategoryViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewCell.swift; sourceTree = "<group>"; };
 		C8F1F6F3240692B200915D4B /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		C8F1F6F524069F0100915D4B /* CategoryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDetailViewController.swift; sourceTree = "<group>"; };
 		F257B7CC59CB25169BEA2D17 /* Pods-examen_ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-examen_ios.release.xcconfig"; path = "Pods/Target Support Files/Pods-examen_ios/Pods-examen_ios.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -131,6 +133,7 @@
 			children = (
 				C8F1F6EE2406885E00915D4B /* CategoriesViewController.swift */,
 				C8F1F6F024068DB600915D4B /* CategoryViewCell.swift */,
+				C8F1F6F524069F0100915D4B /* CategoryDetailViewController.swift */,
 			);
 			path = categories;
 			sourceTree = "<group>";
@@ -299,6 +302,7 @@
 				C8F1F6D4240678B200915D4B /* AppDelegate.swift in Sources */,
 				C8F1F6F124068DB600915D4B /* CategoryViewCell.swift in Sources */,
 				C8F1F6F4240692B200915D4B /* Category.swift in Sources */,
+				C8F1F6F624069F0100915D4B /* CategoryDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import FirebaseFirestore
 
-class CategoriesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
+class CategoryDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
     let db = Firestore.firestore()
     var categories: Array<Category> = []
@@ -50,11 +50,11 @@ class CategoriesViewController: UIViewController, UITableViewDelegate, UITableVi
         
         let categorySelected = self.categories[indexPath.row]
         /*nIndice = indexPath.row
-        if let destinationViewController = segue.destination as? NutrientDetailViewController{
-            // Especificas que esta clase es el delegate del DetailView
-            destinationViewController.delegate = self
-            destinationViewController.set(nutrientData: nutrientSelected)
-        }*/
+         if let destinationViewController = segue.destination as? NutrientDetailViewController{
+         // Especificas que esta clase es el delegate del DetailView
+         destinationViewController.delegate = self
+         destinationViewController.set(nutrientData: nutrientSelected)
+         }*/
     }
     
     func fetchAllCategories(){
